@@ -1,4 +1,9 @@
-#### dotfiles-backup
+
+##### install dependencies
+```bash
+# install brew https://brew.sh
+brew install ffmpeg
+```
 
 ##### clone repository
 ```bash
@@ -6,8 +11,15 @@ mkdir -p ~/Sites/dotfiles-backup
 git clone git@github.com:ngonzalez/dotfiles-backup.git ~/Sites/dotfiles-backup
 ```
 
-##### install
+##### install extract tools
 ```bash
-ln -s ~/Sites/dotfiles-backup/.zshrc ~/.zshrc
-ln -s ~/Sites/dotfiles-backup/.gitconfig ~/.gitconfig
+typeset -U PATH path
+path=( ~/Sites/dotfiles-backup/tools $path )
+```
+
+##### from command line
+```bash
+$ catcue <DIRECTORY>
+$ catm3u <DIRECTORY>
+$ convertaiff <DIRECTORY>
 ```

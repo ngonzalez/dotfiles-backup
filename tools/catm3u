@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 dir=$1
 
 if [ -z "${dir}" ]; then
-    echo "Missing directory parameter. Usage: ~/.catm3u <DIRECTORY>"
+    echo "Missing directory parameter. Usage: catm3u <DIRECTORY>"
     exit 1
 fi
 

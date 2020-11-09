@@ -23,7 +23,7 @@ if [[ `ls "${dir}/" | grep "\[${GRP}\]" --color=never | wc -l | bc` -eq 0 ]]; th
     if [ ! ${m3u_file} ]; then
         m3u_file=`ls ${dir}/* | grep '\.m3u' --color=never | head -n 1`
     fi
-    if [ -f ${m3u_file} ]; then
+    if [[ -f ${m3u_file} ]]; then
         check_m3u $dir $m3u_file
     fi
 fi

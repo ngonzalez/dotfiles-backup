@@ -1,15 +1,9 @@
 #! /bin/bash
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-LIGHT_GREY='\033[0;37m'
-DARK_GREY='\033[1;30m'
-NC='\033[0m' # No Color
-
 dir=$1
 
 if [ -z "${dir}" ]; then
-    echo "Missing directory parameter. Usage: ~/.catcue <DIRECTORY>"
+    echo "Missing directory parameter. Usage: catcue <DIRECTORY>"
     exit 1
 fi
 
@@ -21,15 +15,17 @@ if [[ `ls "${dir}/" | wc -l | bc` -eq 0 ]]; then
     exit 1
 fi
 
-d=`/usr/bin/GetFileInfo -d "${dir}"`
+# GROUP_NAME
+export GRP="GROUP_NAME"
 
-for i in $(ls ${dir}/* | grep '\.cue' --color=never | sort); do
-    file=`cat ${i} | grep "FILE" --color=never | cut -d\" -f2`
-    if [ -f "${dir}/${file}" ]; then
-        echo -e "${DARK_GREY}${d} ${NC}${LIGHT_GREY}${dir}${NC} ${file} ${GREEN}✓${NC}"
-    else
-        echo -e "${RED}${dir}: ${file} not found${NC}"
+if [[ `ls "${dir}/" | grep "\[${GRP}\]" --color=never | wc -l | bc` -eq 0 ]]; then
+    cue_file=`ls ${dir}/* | grep -E '^0{2,3}' --color=never | grep '\.cue' --color=never`
+    if [ ! ${cue_file} ]; then
+        cue_file=`ls ${dir}/* | grep '\.cue' --color=never | head -n 1`
     fi
-done
+    if [[ -f ${cue_file} ]]; then
+        check_cue $dir $cue_file
+    fi
+fi
 
 exit 0

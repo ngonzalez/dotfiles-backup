@@ -22,4 +22,5 @@ path=( ~/Sites/dotfiles-backup/tools $path )
 $ catcue <DIRECTORY>
 $ catm3u <DIRECTORY>
 $ convertaiff <DIRECTORY>
+$ setdate <DIRECTORY>
 ```

@@ -15,6 +15,9 @@ if [[ `ls "${dir}/" | wc -l | bc` -eq 0 ]]; then
     exit 1
 fi
 
+# GROUP_NAME
+export GRP="GROUP_NAME"
+
 for i in $(ls -Ap ${dir} | grep -v -e "^\[${GRP}\]" | sort -r); do
     touch ${dir}/${i}
     setfile ${dir}/${i}

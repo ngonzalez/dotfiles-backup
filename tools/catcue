@@ -20,9 +20,7 @@ export GRP="GROUP_NAME"
 
 if [[ `ls "${dir}/" | grep "\[${GRP}\]" --color=never | wc -l | bc` -eq 0 ]]; then
     cue_file=`ls ${dir}/* | grep -E '^0{2,3}' --color=never | grep '\.cue' --color=never`
-    if [ ! ${cue_file} ]; then
-        cue_file=`ls ${dir}/* | grep '\.cue' --color=never | head -n 1`
-    fi
+    if [ ! ${cue_file} ]; then cue_file=`ls ${dir}/* | grep '\.cue' --color=never | head -n 1`; fi
     if [[ -f ${cue_file} ]]; then
         check_cue $dir $cue_file
     fi

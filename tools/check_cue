@@ -32,6 +32,7 @@ if [ ! -f "${cue_file}" ]; then
 fi
 
 file=`cat ${cue_file} | grep 'FILE' --color=never | cut -d\" -f2`
+
 if [ -f "${dir}/${file}" ]; then
     echo -e "${DARK_GREY}${d} ${NC}${LIGHT_GREY}${dir}${NC} ${file} ${GREEN}✓${NC}"
 else
